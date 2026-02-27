@@ -1,0 +1,18 @@
+[
+  {
+    "id": "636a18e5b3030030",
+    "room_id": "general",
+    "username": "teste",
+    "content": "olá",
+    "type": "text",
+    "created_at": "2026-02-27T00:04:53.322626435Z"
+  },
+  {
+    "id": "ee57f245bdfb24f8",
+    "room_id": "general",
+    "username": "teste2",
+    "content": "olá 2",
+    "type": "text",
+    "created_at": "2026-02-27T00:05:11.940075066Z"
+  }
+]
