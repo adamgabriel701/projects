@@ -1,0 +1,32 @@
+{
+  "e4876d6c-59f1-4a5e-90de-7b4a662fde77": {
+    "id": "e4876d6c-59f1-4a5e-90de-7b4a662fde77",
+    "user_id": "20b70668-dda1-4843-b476-da05a0b2e5b3",
+    "items": [
+      {
+        "product_id": "a422a6d8-d876-41b1-afd5-ae27e5a3329f",
+        "product_name": "Notebook Gamer",
+        "quantity": 2,
+        "unit_price": 5999.99,
+        "subtotal": 11999.98
+      }
+    ],
+    "total": 11999.98,
+    "status": "shipped",
+    "payment_method": "credit_card",
+    "shipping": {
+      "address": {
+        "street": "Rua das Flores, 123",
+        "city": "São Paulo",
+        "state": "SP",
+        "zip_code": "01000-000",
+        "country": "Brasil"
+      },
+      "cost": 0,
+      "tracking": "BR123456789",
+      "estimated_delivery": "2026-03-06T01:04:24.604373196Z"
+    },
+    "created_at": "2026-02-27T01:04:24.604373447Z",
+    "updated_at": "2026-02-27T01:05:22.105509798Z"
+  }
+}

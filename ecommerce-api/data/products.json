@@ -1,0 +1,74 @@
+{
+  "7a66f363-bc2f-45ae-bd5e-5337cf103254": {
+    "id": "7a66f363-bc2f-45ae-bd5e-5337cf103254",
+    "name": "Headset Gamer",
+    "description": "Som surround 7.1, microfone removível",
+    "price": 299.99,
+    "stock": 30,
+    "category": "Áudio",
+    "image_url": "https://example.com/headset.jpg",
+    "active": true,
+    "created_at": "2026-02-27T01:00:29.892251371Z",
+    "updated_at": "2026-02-27T01:00:29.892251461Z"
+  },
+  "94b7b04e-a188-4707-82d0-f075d74c8b07": {
+    "id": "94b7b04e-a188-4707-82d0-f075d74c8b07",
+    "name": "Monitor 27''",
+    "description": "144Hz, 1ms, IPS, QHD",
+    "price": 1899.99,
+    "stock": 15,
+    "category": "Monitores",
+    "image_url": "https://example.com/monitor.jpg",
+    "active": true,
+    "created_at": "2026-02-27T01:00:29.891712736Z",
+    "updated_at": "2026-02-27T01:00:29.891712846Z"
+  },
+  "9a79c45f-accb-49ae-852b-a1317bcd2db7": {
+    "id": "9a79c45f-accb-49ae-852b-a1317bcd2db7",
+    "name": "iPhone 15",
+    "description": "128GB, iOS 17",
+    "price": 6999.99,
+    "stock": 20,
+    "category": "Smartphones",
+    "image_url": "",
+    "active": true,
+    "created_at": "2026-02-27T01:02:44.779575061Z",
+    "updated_at": "2026-02-27T01:02:44.779575131Z"
+  },
+  "a422a6d8-d876-41b1-afd5-ae27e5a3329f": {
+    "id": "a422a6d8-d876-41b1-afd5-ae27e5a3329f",
+    "name": "Notebook Gamer",
+    "description": "Notebook com RTX 4060, 16GB RAM, SSD 512GB",
+    "price": 5999.99,
+    "stock": 8,
+    "category": "Eletrônicos",
+    "image_url": "https://example.com/notebook.jpg",
+    "active": true,
+    "created_at": "2026-02-27T01:00:29.889183243Z",
+    "updated_at": "2026-02-27T01:00:29.889183343Z"
+  },
+  "a57b5369-08f1-47fa-9589-e69e9119052d": {
+    "id": "a57b5369-08f1-47fa-9589-e69e9119052d",
+    "name": "Mouse Sem Fio",
+    "description": "Mouse ergonômico com DPI ajustável",
+    "price": 149.99,
+    "stock": 50,
+    "category": "Periféricos",
+    "image_url": "https://example.com/mouse.jpg",
+    "active": true,
+    "created_at": "2026-02-27T01:00:29.890041706Z",
+    "updated_at": "2026-02-27T01:00:29.890041816Z"
+  },
+  "f7a5c23d-d2f3-4ab4-9d43-1c3fab195fa8": {
+    "id": "f7a5c23d-d2f3-4ab4-9d43-1c3fab195fa8",
+    "name": "Teclado Mecânico",
+    "description": "Switch Red, RGB, Layout ABNT2",
+    "price": 399.99,
+    "stock": 25,
+    "category": "Periféricos",
+    "image_url": "https://example.com/teclado.jpg",
+    "active": true,
+    "created_at": "2026-02-27T01:00:29.890919975Z",
+    "updated_at": "2026-02-27T01:00:29.890920106Z"
+  }
+}
