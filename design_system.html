@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinCorp Design System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Cores Primárias */
+            --primary-navy: #0A2540;
+            --primary-navy-light: #143D5C;
+            --primary-navy-dark: #051524;
+
+            /* Cores Secundárias */
+            --secondary-gold: #C9A227;
+            --secondary-gold-light: #E5C76B;
+            --secondary-gold-dark: #9A7B1A;
+
+            /* Cores de Apoio */
+            --accent-teal: #00D4AA;
+            --accent-coral: #FF6B6B;
+            --accent-slate: #64748B;
+
+            /* Cores Neutras */
+            --neutral-white: #FFFFFF;
+            --neutral-gray-50: #F8FAFC;
+            --neutral-gray-100: #F1F5F9;
+            --neutral-gray-200: #E2E8F0;
+            --neutral-gray-300: #CBD5E1;
+            --neutral-gray-400: #94A3B8;
+            --neutral-gray-500: #64748B;
+            --neutral-gray-600: #475569;
+            --neutral-gray-700: #334155;
+            --neutral-gray-800: #1E293B;
+            --neutral-gray-900: #0F172A;
+
+            /* Cores Semânticas */
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --info: #3B82F6;
+
+            /* Tipografia */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-display: 'DM Serif Display', Georgia, serif;
+
+            /* Tamanhos de Fonte */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            --text-5xl: 3rem;
+            --text-6xl: 3.75rem;
+
+            /* Pesos de Fonte */
+            --font-normal: 400;
+            --font-medium: 500;
+            --font-semibold: 600;
+            --font-bold: 700;
+
+            /* Espaçamento */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+
+            /* Bordas */
+            --radius-none: 0;
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            --radius-full: 9999px;
+
+            /* Sombras */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+            /* Transições */
+            --transition-fast: 150ms ease-in-out;
+            --transition-base: 200ms ease-in-out;
+            --transition-slow: 300ms ease-in-out;
+
+            /* Z-index */
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal-backdrop: 1040;
+            --z-modal: 1050;
+            --z-popover: 1060;
+            --z-tooltip: 1070;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: var(--text-base);
+            line-height: 1.6;
+            color: var(--neutral-gray-800);
+            background-color: var(--neutral-gray-50);
+        }
+
+        /* Layout */
+        .ds-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-6);
+        }
+
+        .ds-grid {
+            display: grid;
+            gap: var(--space-6);
+        }
+
+        .ds-grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .ds-grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .ds-grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width: 768px) {
+            .ds-grid-2, .ds-grid-3, .ds-grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Header */
+        .ds-header {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-light) 100%);
+            color: var(--neutral-white);
+            padding: var(--space-16) var(--space-6);
+            text-align: center;
+            margin-bottom: var(--space-12);
+        }
+
+        .ds-header h1 {
+            font-family: var(--font-display);
+            font-size: var(--text-5xl);
+            margin-bottom: var(--space-4);
+            font-weight: var(--font-normal);
+        }
+
+        .ds-header p {
+            font-size: var(--text-xl);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Seções */
+        .ds-section {
+            background: var(--neutral-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            margin-bottom: var(--space-8);
+            box-shadow: var(--shadow-md);
+        }
+
+        .ds-section-title {
+            font-size: var(--text-3xl);
+            color: var(--primary-navy);
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 3px solid var(--secondary-gold);
+            display: inline-block;
+        }
+
+        .ds-subsection {
+            margin-bottom: var(--space-8);
+        }
+
+        .ds-subsection h3 {
+            font-size: var(--text-xl);
+            color: var(--neutral-gray-700);
+            margin-bottom: var(--space-4);
+        }
+
+        /* Cores */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .color-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-base);
+        }
+
+        .color-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .color-preview {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--font-semibold);
+        }
+
+        .color-info {
+            padding: var(--space-4);
+            background: var(--neutral-white);
+        }
+
+        .color-name {
+            font-weight: var(--font-semibold);
+            color: var(--neutral-gray-800);
+            margin-bottom: var(--space-1);
+        }
+
+        .color-hex {
+            font-family: monospace;
+            font-size: var(--text-sm);
+            color: var(--neutral-gray-500);
+        }
+
+        /* Tipografia */
+        .type-scale {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .type-item {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-4);
+            padding: var(--space-4);
+            background: var(--neutral-gray-50);
+            border-radius: var(--radius-md);
+        }
+
+        .type-sample {
+            flex: 1;
+        }
+
+        .type-meta {
+            font-size: var(--text-sm);
+            color: var(--neutral-gray-500);
+            font-family: monospace;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-6);
+            font-family: var(--font-primary);
+            font-size: var(--text-base);
+            font-weight: var(--font-semibold);
+            text-decoration: none;
+            border: none;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-gold) 0%, var(--secondary-gold-dark) 100%);
+            color: var(--primary-navy-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-navy);
+            border: 2px solid var(--primary-navy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-navy);
+            color: var(--neutral-white);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--primary-navy);
+        }
+
+        .btn-ghost:hover {
+            background: var(--neutral-gray-100);
+        }
+
+        .btn-sm {
+            padding: var(--space-2) var(--space-4);
+            font-size: var(--text-sm);
+        }
+
+        .btn-lg {
+            padding: var(--space-4) var(--space-8);
+            font-size: var(--text-lg);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+            margin-top: var(--space-4);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--neutral-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            border: 1px solid var(--neutral-gray-200);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+        }
+
+        .card-featured {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-light) 100%);
+            color: var(--neutral-white);
+            border: none;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--secondary-gold);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-navy);
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-4);
+        }
+
+        .card-featured .card-icon {
+            background: var(--secondary-gold);
+            color: var(--primary-navy);
+        }
+
+        .card h4 {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-2);
+            color: inherit;
+        }
+
+        .card p {
+            color: var(--neutral-gray-600);
+            line-height: 1.6;
+        }
+
+        .card-featured p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Formulários */
+        .form-group {
+            margin-bottom: var(--space-6);
+        }
+
+        .form-label {
+            display: block;
+            font-weight: var(--font-semibold);
+            color: var(--neutral-gray-700);
+            margin-bottom: var(--space-2);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            font-family: var(--font-primary);
+            font-size: var(--text-base);
+            border: 2px solid var(--neutral-gray-200);
+            border-radius: var(--radius-lg);
+            background: var(--neutral-white);
+            transition: all var(--transition-base);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--secondary-gold);
+            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: var(--neutral-gray-400);
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748B'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 20px;
+            padding-right: var(--space-10);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Alertas */
+        .alert {
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+        }
+
+        .alert-success {
+            background: #D1FAE5;
+            color: #065F46;
+            border-left: 4px solid var(--success);
+        }
+
+        .alert-warning {
+            background: #FEF3C7;
+            color: #92400E;
+            border-left: 4px solid var(--warning);
+        }
+
+        .alert-error {
+            background: #FEE2E2;
+            color: #991B1B;
+            border-left: 4px solid var(--error);
+        }
+
+        .alert-info {
+            background: #DBEAFE;
+            color: #1E40AF;
+            border-left: 4px solid var(--info);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--space-1) var(--space-3);
+            font-size: var(--text-xs);
+            font-weight: var(--font-semibold);
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-primary {
+            background: var(--secondary-gold);
+            color: var(--primary-navy-dark);
+        }
+
+        .badge-secondary {
+            background: var(--primary-navy);
+            color: var(--neutral-white);
+        }
+
+        .badge-outline {
+            background: transparent;
+            border: 1px solid currentColor;
+            color: var(--neutral-gray-600);
+        }
+
+        /* Tabelas */
+        .table-container {
+            overflow-x: auto;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--neutral-white);
+        }
+
+        .table th {
+            background: var(--primary-navy);
+            color: var(--neutral-white);
+            padding: var(--space-4);
+            text-align: left;
+            font-weight: var(--font-semibold);
+            text-transform: uppercase;
+            font-size: var(--text-sm);
+            letter-spacing: 0.05em;
+        }
+
+        .table td {
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--neutral-gray-200);
+        }
+
+        .table tr:hover td {
+            background: var(--neutral-gray-50);
+        }
+
+        /* Navegação */
+        .nav {
+            background: var(--neutral-white);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-3) var(--space-4);
+            color: var(--neutral-gray-600);
+            text-decoration: none;
+            font-weight: var(--font-medium);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--secondary-gold);
+            color: var(--primary-navy-dark);
+        }
+
+        /* Tabs */
+        .tabs {
+            border-bottom: 2px solid var(--neutral-gray-200);
+            margin-bottom: var(--space-6);
+        }
+
+        .tab-list {
+            display: flex;
+            gap: var(--space-6);
+            list-style: none;
+        }
+
+        .tab-link {
+            padding: var(--space-4) var(--space-2);
+            color: var(--neutral-gray-500);
+            text-decoration: none;
+            font-weight: var(--font-semibold);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all var(--transition-fast);
+        }
+
+        .tab-link:hover, .tab-link.active {
+            color: var(--primary-navy);
+            border-bottom-color: var(--secondary-gold);
+        }
+
+        /* Progress Bar */
+        .progress {
+            width: 100%;
+            height: 8px;
+            background: var(--neutral-gray-200);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-gold) 0%, var(--secondary-gold-light) 100%);
+            border-radius: var(--radius-full);
+            transition: width var(--transition-slow);
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            background: var(--primary-navy);
+            color: var(--neutral-white);
+            text-align: center;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            font-size: var(--text-sm);
+            position: absolute;
+            z-index: var(--z-tooltip);
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 37, 64, 0.5);
+            z-index: var(--z-modal-backdrop);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--neutral-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            max-width: 500px;
+            width: 90%;
+            z-index: var(--z-modal);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .modal-title {
+            font-size: var(--text-2xl);
+            color: var(--primary-navy);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: var(--text-2xl);
+            color: var(--neutral-gray-400);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+
+        .modal-close:hover {
+            color: var(--neutral-gray-600);
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--neutral-gray-200);
+            border-top-color: var(--secondary-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Skeleton Loading */
+        .skeleton {
+            background: linear-gradient(90deg, var(--neutral-gray-200) 25%, var(--neutral-gray-100) 50%, var(--neutral-gray-200) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius-md);
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Dividers */
+        .divider {
+            height: 1px;
+            background: var(--neutral-gray-200);
+            margin: var(--space-8) 0;
+        }
+
+        .divider-text {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--neutral-gray-500);
+            font-size: var(--text-sm);
+        }
+
+        .divider-text::before,
+        .divider-text::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--neutral-gray-200);
+        }
+
+        .divider-text span {
+            padding: 0 var(--space-4);
+        }
+
+        /* Estatísticas */
+        .stat-card {
+            text-align: center;
+            padding: var(--space-6);
+        }
+
+        .stat-value {
+            font-size: var(--text-5xl);
+            font-weight: var(--font-bold);
+            color: var(--primary-navy);
+            line-height: 1;
+            margin-bottom: var(--space-2);
+        }
+
+        .stat-label {
+            color: var(--neutral-gray-500);
+            font-size: var(--text-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Footer do Design System */
+        .ds-footer {
+            text-align: center;
+            padding: var(--space-12) var(--space-6);
+            color: var(--neutral-gray-500);
+            border-top: 1px solid var(--neutral-gray-200);
+            margin-top: var(--space-12);
+        }
+
+        /* Utilitários */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-left { text-align: left; }
+        .font-bold { font-weight: var(--font-bold); }
+        .font-semibold { font-weight: var(--font-semibold); }
+        .uppercase { text-transform: uppercase; }
+        .capitalize { text-transform: capitalize; }
+        .hidden { display: none; }
+        .block { display: block; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-2 { gap: var(--space-2); }
+        .gap-4 { gap: var(--space-4); }
+        .mt-4 { margin-top: var(--space-4); }
+        .mb-4 { margin-bottom: var(--space-4); }
+        .p-4 { padding: var(--space-4); }
+        .rounded { border-radius: var(--radius-md); }
+        .shadow { box-shadow: var(--shadow-md); }
+        .bg-white { background: var(--neutral-white); }
+        .text-navy { color: var(--primary-navy); }
+        .text-gold { color: var(--secondary-gold); }
+
+        /* Dark Mode Preview */
+        .dark-preview {
+            background: var(--primary-navy);
+            color: var(--neutral-white);
+            padding: var(--space-8);
+            border-radius: var(--radius-xl);
+            margin-top: var(--space-6);
+        }
+
+        .dark-preview .card {
+            background: var(--primary-navy-light);
+            border-color: var(--primary-navy-light);
+            color: var(--neutral-white);
+        }
+
+        .dark-preview .card p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <header class="ds-header">
+        <h1>FinCorp Design System</h1>
+        <p>Guia completo de design para produtos financeiros. Componentes, cores, tipografia e padrões de interface.</p>
+    </header>
+
+    <main class="ds-container">
+        <!-- Cores -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Paleta de Cores</h2>
+
+            <div class="ds-subsection">
+                <h3>Cores Primárias</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #0A2540; color: white;">Navy</div>
+                        <div class="color-info">
+                            <div class="color-name">Primary Navy</div>
+                            <div class="color-hex">#0A2540</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #143D5C; color: white;">Navy Light</div>
+                        <div class="color-info">
+                            <div class="color-name">Navy Light</div>
+                            <div class="color-hex">#143D5C</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #051524; color: white;">Navy Dark</div>
+                        <div class="color-info">
+                            <div class="color-name">Navy Dark</div>
+                            <div class="color-hex">#051524</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-subsection">
+                <h3>Cores Secundárias</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #C9A227; color: #0A2540;">Gold</div>
+                        <div class="color-info">
+                            <div class="color-name">Gold</div>
+                            <div class="color-hex">#C9A227</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #E5C76B; color: #0A2540;">Gold Light</div>
+                        <div class="color-info">
+                            <div class="color-name">Gold Light</div>
+                            <div class="color-hex">#E5C76B</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #9A7B1A; color: white;">Gold Dark</div>
+                        <div class="color-info">
+                            <div class="color-name">Gold Dark</div>
+                            <div class="color-hex">#9A7B1A</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-subsection">
+                <h3>Cores Semânticas</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #10B981; color: white;">Success</div>
+                        <div class="color-info">
+                            <div class="color-name">Success</div>
+                            <div class="color-hex">#10B981</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #F59E0B; color: white;">Warning</div>
+                        <div class="color-info">
+                            <div class="color-name">Warning</div>
+                            <div class="color-hex">#F59E0B</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #EF4444; color: white;">Error</div>
+                        <div class="color-info">
+                            <div class="color-name">Error</div>
+                            <div class="color-hex">#EF4444</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #3B82F6; color: white;">Info</div>
+                        <div class="color-info">
+                            <div class="color-name">Info</div>
+                            <div class="color-hex">#3B82F6</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tipografia -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Tipografia</h2>
+            <div class="type-scale">
+                <div class="type-item">
+                    <div class="type-sample" style="font-size: 3.75rem; font-weight: 700;">Heading 1</div>
+                    <div class="type-meta">60px / Bold</div>
+                </div>
+                <div class="type-item">
+                    <div class="type-sample" style="font-size: 3rem; font-weight: 700;">Heading 2</div>
+                    <div class="type-meta">48px / Bold</div>
+                </div>
+                <div class="type-item">
+                    <div class="type-sample" style="font-size: 2.25rem; font-weight: 600;">Heading 3</div>
+                    <div class="type-meta">36px / SemiBold</div>
+                </div>
+                <div class="type-item">
+                    <div class="type-sample" style="font-size: 1.875rem; font-weight: 600;">Heading 4</div>
+                    <div class="type-meta">30px / SemiBold</div>
+                </div>
+                <div class="type-item">
+                    <div class="type-sample" style="font-size: 1.25rem; font-weight: 500;">Heading 5</div>
+                    <div class="type-meta">20px / Medium</div>
+                </div>
+                <div class="type-item">
+                    <div class="type-sample" style="font-size: 1rem;">Body Text - O rápido raposo marrom salta sobre o cão preguiçoso. Este é o texto padrão para conteúdo.</div>
+                    <div class="type-meta">16px / Regular</div>
+                </div>
+                <div class="type-item">
+                    <div class="type-sample" style="font-size: 0.875rem;">Small Text - Texto menor para legendas e notas de rodapé.</div>
+                    <div class="type-meta">14px / Regular</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botões -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Botões</h2>
+
+            <div class="ds-subsection">
+                <h3>Variantes</h3>
+                <div class="btn-group">
+                    <button class="btn btn-primary">Primary Button</button>
+                    <button class="btn btn-secondary">Secondary Button</button>
+                    <button class="btn btn-ghost">Ghost Button</button>
+                </div>
+            </div>
+
+            <div class="ds-subsection">
+                <h3>Tamanhos</h3>
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-sm">Small</button>
+                    <button class="btn btn-primary">Default</button>
+                    <button class="btn btn-primary btn-lg">Large</button>
+                </div>
+            </div>
+
+            <div class="ds-subsection">
+                <h3>Com Ícones</h3>
+                <div class="btn-group">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-arrow-right"></i>
+                        Próximo
+                    </button>
+                    <button class="btn btn-ghost">
+                        <i class="fas fa-plus"></i>
+                        Adicionar
+                    </button>
+                </div>
+            </div>
+
+            <div class="ds-subsection">
+                <h3>Estado de Loading</h3>
+                <div class="btn-group">
+                    <button class="btn btn-primary" disabled>
+                        <div class="spinner" style="width: 16px; height: 16px; border-width: 2px; margin-right: 8px;"></div>
+                        Processando...
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Cards</h2>
+            <div class="ds-grid ds-grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Investimentos</h4>
+                    <p>Gerencie sua carteira de investimentos com ferramentas avançadas de análise e acompanhamento em tempo real.</p>
+                    <button class="btn btn-primary btn-sm" style="margin-top: 16px;">Saiba mais</button>
+                </div>
+
+                <div class="card card-featured">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Segurança</h4>
+                    <p>Proteção máxima para seus dados e transações com criptografia de ponta e autenticação multifator.</p>
+                    <button class="btn btn-primary btn-sm" style="margin-top: 16px; background: white; color: #0A2540;">Saiba mais</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>App Mobile</h4>
+                    <p>Acesse sua conta de qualquer lugar com nosso aplicativo disponível para iOS e Android.</p>
+                    <button class="btn btn-secondary btn-sm" style="margin-top: 16px;">Download</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulários -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Formulários</h2>
+
+            <div class="ds-grid ds-grid-2">
+                <div>
+                    <div class="form-group">
+                        <label class="form-label">Nome completo</label>
+                        <input type="text" class="form-input" placeholder="Digite seu nome">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email corporativo</label>
+                        <input type="email" class="form-input" placeholder="seu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Telefone</label>
+                        <input type="tel" class="form-input" placeholder="(00) 00000-0000">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-group">
+                        <label class="form-label">Tipo de conta</label>
+                        <select class="form-input form-select">
+                            <option>Conta Corrente</option>
+                            <option>Conta Poupança</option>
+                            <option>Conta Empresarial</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Mensagem</label>
+                        <textarea class="form-input form-textarea" placeholder="Digite sua mensagem..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Valor do investimento</label>
+                        <input type="number" class="form-input" placeholder="R$ 0,00">
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: 24px;">
+                <button class="btn btn-primary">Enviar</button>
+                <button class="btn btn-secondary">Cancelar</button>
+            </div>
+        </section>
+
+        <!-- Alertas -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Alertas e Notificações</h2>
+
+            <div class="alert alert-success">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>Sucesso!</strong> Sua transação foi processada com sucesso.</span>
+            </div>
+
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span><strong>Atenção!</strong> Verifique seus dados antes de continuar.</span>
+            </div>
+
+            <div class="alert alert-error">
+                <i class="fas fa-times-circle"></i>
+                <span><strong>Erro!</strong> Não foi possível completar a operação. Tente novamente.</span>
+            </div>
+
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <span><strong>Informação:</strong> Novos recursos disponíveis na sua conta.</span>
+            </div>
+        </section>
+
+        <!-- Badges -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Badges</h2>
+            <div class="btn-group">
+                <span class="badge badge-primary">Novo</span>
+                <span class="badge badge-secondary">Premium</span>
+                <span class="badge badge-outline">Padrão</span>
+                <span class="badge badge-primary">Aprovado</span>
+                <span class="badge badge-secondary">Pendente</span>
+            </div>
+        </section>
+
+        <!-- Tabelas -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Tabelas</h2>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Ativo</th>
+                            <th>Tipo</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                            <th>Variação</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PETR4</strong></td>
+                            <td>Ação</td>
+                            <td>1.000</td>
+                            <td>R$ 35.420,00</td>
+                            <td style="color: var(--success);">+2.45%</td>
+                            <td><span class="badge badge-primary">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>VALE3</strong></td>
+                            <td>Ação</td>
+                            <td>500</td>
+                            <td>R$ 32.150,00</td>
+                            <td style="color: var(--error);">-1.23%</td>
+                            <td><span class="badge badge-primary">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ITUB4</strong></td>
+                            <td>Ação</td>
+                            <td>2.000</td>
+                            <td>R$ 58.900,00</td>
+                            <td style="color: var(--success);">+0.89%</td>
+                            <td><span class="badge badge-secondary">Pendente</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>BBDC4</strong></td>
+                            <td>Ação</td>
+                            <td>1.500</td>
+                            <td>R$ 22.350,00</td>
+                            <td style="color: var(--success);">+1.56%</td>
+                            <td><span class="badge badge-primary">Ativo</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Navegação -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Navegação</h2>
+
+            <nav class="nav" style="margin-bottom: 24px;">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link active">Dashboard</a></li>
+                    <li><a href="#" class="nav-link">Investimentos</a></li>
+                    <li><a href="#" class="nav-link">Transferências</a></li>
+                    <li><a href="#" class="nav-link">Relatórios</a></li>
+                    <li><a href="#" class="nav-link">Configurações</a></li>
+                </ul>
+            </nav>
+
+            <div class="tabs">
+                <ul class="tab-list">
+                    <li><a href="#" class="tab-link active">Visão Geral</a></li>
+                    <li><a href="#" class="tab-link">Performance</a></li>
+                    <li><a href="#" class="tab-link">Histórico</a></li>
+                    <li><a href="#" class="tab-link">Análises</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Progresso e Loading -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Progresso e Loading</h2>
+
+            <div class="ds-subsection">
+                <h3>Progress Bar</h3>
+                <div class="progress" style="margin-bottom: 16px;">
+                    <div class="progress-bar" style="width: 75%;"></div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 45%;"></div>
+                </div>
+            </div>
+
+            <div class="ds-subsection">
+                <h3>Loading States</h3>
+                <div class="btn-group" style="align-items: center;">
+                    <div class="spinner"></div>
+                    <div class="skeleton" style="width: 200px; height: 20px;"></div>
+                    <div class="skeleton" style="width: 150px; height: 20px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estatísticas -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Estatísticas</h2>
+            <div class="ds-grid ds-grid-4">
+                <div class="card stat-card">
+                    <div class="stat-value">R$ 2.4M</div>
+                    <div class="stat-label">Patrimônio</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-value">+18%</div>
+                    <div class="stat-label">Rentabilidade</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-value">156</div>
+                    <div class="stat-label">Ativos</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Carteiras</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dark Mode Preview -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Dark Mode</h2>
+            <div class="dark-preview">
+                <div class="ds-grid ds-grid-3">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h4>Dark Theme</h4>
+                        <p>Interface otimizada para uso noturno com contrastes ajustados para reduzir fadiga visual.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Acessibilidade</h4>
+                        <p>Cores e tipografia cuidadosamente selecionadas para garantir legibilidade em todos os modos.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-adjust"></i>
+                        </div>
+                        <h4>Auto Switch</h4>
+                        <p>Alternância automática entre modos claro e escuro baseado nas preferências do sistema.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Componentes Adicionais -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Componentes Adicionais</h2>
+
+            <div class="ds-subsection">
+                <h3>Tooltip</h3>
+                <p>Passe o mouse sobre o elemento abaixo:</p>
+                <div class="tooltip" style="margin-top: 16px;">
+                    <button class="btn btn-secondary">Hover me</button>
+                    <span class="tooltip-text">Esta é uma dica de ferramenta!</span>
+                </div>
+            </div>
+
+            <div class="ds-subsection">
+                <h3>Divider</h3>
+                <div class="divider"></div>
+                <div class="divider-text">
+                    <span>ou continue com</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Demo -->
+        <section class="ds-section">
+            <h2 class="ds-section-title">Modal</h2>
+            <button class="btn btn-primary" onclick="document.getElementById('demoModal').style.display='block'; document.getElementById('demoOverlay').style.display='block';">
+                Abrir Modal
+            </button>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="demoOverlay" onclick="document.getElementById('demoModal').style.display='none'; this.style.display='none';"></div>
+    <div class="modal" id="demoModal">
+        <div class="modal-header">
+            <h3 class="modal-title">Confirmar Transação</h3>
+            <button class="modal-close" onclick="document.getElementById('demoModal').style.display='none'; document.getElementById('demoOverlay').style.display='none';">&times;</button>
+        </div>
+        <p style="margin-bottom: 24px;">Você está prestes a transferir <strong>R$ 5.000,00</strong> para a conta de João Silva. Deseja continuar?</p>
+        <div class="btn-group">
+            <button class="btn btn-primary">Confirmar</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('demoModal').style.display='none'; document.getElementById('demoOverlay').style.display='none';">Cancelar</button>
+        </div>
+    </div>
+
+    <footer class="ds-footer">
+        <p><strong>FinCorp Design System v1.0</strong></p>
+        <p style="margin-top: 8px;">© 2026 FinCorp. Todos os direitos reservados.</p>
+        <p style="margin-top: 16px; font-size: 0.875rem;">
+            <i class="fas fa-code"></i> Desenvolvido com 
+            <i class="fas fa-heart" style="color: var(--error);"></i> 
+            para produtos financeiros
+        </p>
+    </footer>
+</body>
+</html>
